@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AdminController extends Controller
 {
     /**
-     * @Route("/admin/", name="admin.home")
+     * @Route("/gestion/", name="admin.home")
      */
     public function indexAction(Request $request)
     {

@@ -24,15 +24,20 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
+                check_path: /gestion/login_check
+                login_path: /gestion/login
+            logout:
+                path: /gestion/logout
+                target: /gestion
 
             logout: true
             anonymous: ~
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_USER }
+        - { path: ^/gestion/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/gestion/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/gestion/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/gestion/, role: ROLE_USER }
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
             # activate different ways to authenticate
 
