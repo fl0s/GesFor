@@ -116,6 +116,9 @@ desired effect
                         <li {% if (pageIds|length > 2 and pageIds.2 == 'utilisateur') %}class="active"{% endif %}>
                             <a href="#"><i class="fa fa-users"></i> Utilisateurs</a>
                         </li>
+                        <li {% if (pageIds|length > 2 and pageIds.2 == 'antenne') %}class="active"{% endif %}>
+                            <a href="{{ path('admin.antenne') }}"><i class="fa fa-map-marker"></i></i> Antennes</a>
+                        </li>
                         <li {% if (pageIds|length > 2 and pageIds.2 == 'type_formation') %}class="active"{% endif %}>
                             <a href="#"><i class="fa fa-graduation-cap"></i> Type de formation</a>
                         </li>
@@ -131,13 +134,14 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                {{ pageHeader|default('') }}
+                <small>{{ pageHeaderPlus|default('') }}</small>
             </h1>
         </section>
 
         <!-- Main content -->
         <section class="content">
+            {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
 
             {% block body %}{% endblock %}
 

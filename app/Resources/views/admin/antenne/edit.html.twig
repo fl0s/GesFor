@@ -1,0 +1,32 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set page = "admin.admin.antenne" %}
+{% set pageHeader = "Gestion des antennes" %}
+{% set pageHeaderPlus = "Editer l'Antenne de " ~ antenne.name %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {{ form_errors(form) }}
+            <div class="box">
+                <form method="post" action="{{ path('admin.antenne.edit', {'id': antenne.id}) }}" class="form-horizontal">
+                    <div class="box-body">
+                        {{ form_row(form.name, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Nom de l\'Antenne' }) }}
+                        {{ form_row(form.shortName, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Identifiant de l\'Antenne' }) }}
+                    </div>
+                    <div class="box-footer">
+                        {{ form_rest(form) }}
+                        <input type="submit" class="btn btn-primary pull-right" value="Editer" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}
