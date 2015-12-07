@@ -2,54 +2,55 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Antenne;
+use AppBundle\Entity\TypeFormation;
 use AppBundle\Form\Antenne\AntenneCreateType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Form\TypeFormation\TypeFormationCreateType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * Class AdminAntenneController
+ * Class AdminTypeController
  * @package AppBundle\Controller
- * @Route("/gestion/antenne")
+ * @Route("/gestion/type")
  */
-class AdminAntenneController extends Controller
+class AdminTypeController extends Controller
 {
     /**
-     * @Route("/", name="admin.antenne")
+     * @Route("/", name="admin.type")
      */
     public function indexAction(Request $request)
     {
-        $antennes = $this->getDoctrine()->getManager()->getRepository("AppBundle:Antenne")->findAll();
+        $types = $this->getDoctrine()->getManager()->getRepository("AppBundle:TypeFormation")->findAll();
 
-        return $this->render('admin/antenne/index.html.twig', array(
-            'antenne' => $antennes,
+        return $this->render('admin/type/index.html.twig', array(
+            'types' => $types,
         ));
     }
 
     /**
-     * @Route("/create", name="admin.antenne.create")
+     * @Route("/create", name="admin.type.create")
      */
     public function createAction(Request $request)
     {
-        $antenne = new Antenne();
+        $type = new TypeFormation();
 
-        $form = $this->createForm(new AntenneCreateType(), $antenne);
+        $form = $this->createForm(new TypeFormationCreateType(), $type);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($antenne);
+            $em->persist($type);
             $em->flush();
 
-            $this->get('braincrafted_bootstrap.flash')->success("L'antenne de ".$antenne->getName()." a bien été créée!");
+            $this->get('braincrafted_bootstrap.flash')->success("Le nouveau type de formation a bien été créée!");
 
-            return $this->redirectToRoute('admin.antenne');
+            return $this->redirectToRoute('admin.type');
         }
 
-        return $this->render('admin/antenne/create.html.twig',array(
+        return $this->render('admin/type/create.html.twig',array(
             'form' => $form->createView()
         ));
     }

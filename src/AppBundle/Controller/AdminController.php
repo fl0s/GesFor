@@ -6,10 +6,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class AdminController
+ * @package AppBundle\Controller
+ * @Route("/gestion")
+ */
 class AdminController extends Controller
 {
     /**
-     * @Route("/gestion/", name="admin.home")
+     * @Route("/", name="admin.home")
      */
     public function indexAction(Request $request)
     {

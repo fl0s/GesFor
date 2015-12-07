@@ -1,0 +1,33 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set page = "admin.admin.type_formation" %}
+{% set pageHeader = "Gestion des types de formation" %}
+{% set pageHeaderPlus = "Ajout" %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {{ form_errors(form) }}
+            <div class="box">
+                <form method="post" action="{{ path('admin.type.create') }}" class="form-horizontal">
+                    <div class="box-body">
+                        {{ form_row(form.titre, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Nom de l\'Antenne' }) }}
+                        {{ form_row(form.maxPlace, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, }) }}
+                        {{ form_row(form.prix, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, }) }}
+                    </div>
+                    <div class="box-footer">
+                        {{ form_rest(form) }}
+                        <input type="submit" class="btn btn-primary pull-right" value="Ajouter" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}

@@ -32,4 +32,70 @@ class TypeFormation
      */
     protected $prix;
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param mixed $titre
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMaxPlace()
+    {
+        return $this->maxPlace;
+    }
+
+    /**
+     * @param mixed $maxPlace
+     */
+    public function setMaxPlace($maxPlace)
+    {
+        $this->maxPlace = $maxPlace;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param mixed $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+
+
 }
