@@ -56,80 +56,76 @@ class AdminTypeController extends Controller
     }
 
     /**
-     * @Route("/{id}/create", name="admin.antenne.edit")
+     * @Route("/{id}/edit", name="admin.type.edit")
      */
     public function editAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $antenne = $em->getRepository("AppBundle:Antenne")->find($id);
+        $type = $em->getRepository("AppBundle:TypeFormation")->find($id);
 
-        if (is_null($antenne)) {
-            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'editer l'antenne demandée!");
-            return $this->redirectToRoute('admin.antenne');
+        if (is_null($type)) {
+            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'editer le type de formation demandée!");
+            return $this->redirectToRoute('admin.type');
         }
 
-        $form = $this->createForm(new AntenneCreateType(), $antenne);
+        $form = $this->createForm(new TypeFormationCreateType(), $type);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-
-            //$em->persist($antenne);
             $em->flush();
 
-            $this->get('braincrafted_bootstrap.flash')->success("L'antenne de ".$antenne->getName()." a bien été éditée!");
+            $this->get('braincrafted_bootstrap.flash')->success("La formation ".$type->getTitre()." a bien été éditée!");
 
-            return $this->redirectToRoute('admin.antenne');
+            return $this->redirectToRoute('admin.type');
         }
 
-        return $this->render('admin/antenne/edit.html.twig',array(
+        return $this->render('admin/type/edit.html.twig',array(
             'form'      => $form->createView(),
-            'antenne'   => $antenne
+            'type'   => $type
         ));
     }
 
     /**
-     * @Route("/{id}/archive", name="admin.antenne.archive")
+     * @Route("/{id}/archive", name="admin.type.archive")
      */
     public function archiveAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $antenne = $em->getRepository("AppBundle:Antenne")->find($id);
+        $type = $em->getRepository("AppBundle:TypeFormation")->find($id);
 
-        if (is_null($antenne)) {
-            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'archiver l'antenne demandée!");
-            return $this->redirectToRoute('admin.antenne');
+        if (is_null($type)) {
+            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'archiver la formation demandée!");
+            return $this->redirectToRoute('admin.type');
         }
 
-        $antenne->setArchived(true);
-        $em->persist($antenne);
+        $type->setArchived(true);
         $em->flush();
 
-        $this->get('braincrafted_bootstrap.flash')->success("L'antenne de ".$antenne->getName()." a bien été archivée!");
-        return $this->redirectToRoute('admin.antenne');
+        $this->get('braincrafted_bootstrap.flash')->success("La formation ".$type->getTitre()." a bien été archivée!");
+        return $this->redirectToRoute('admin.type');
     }
 
     /**
-     * @Route("/{id}/activer", name="admin.antenne.activer")
+     * @Route("/{id}/activer", name="admin.type.activer")
      */
     public function activeAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $antenne = $em->getRepository("AppBundle:Antenne")->find($id);
+        $type = $em->getRepository("AppBundle:TypeFormation")->find($id);
 
-        if (is_null($antenne)) {
-            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'activer l'antenne demandée!");
-            return $this->redirectToRoute('admin.antenne');
+        if (is_null($type)) {
+            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'activer la formation demandée!");
+            return $this->redirectToRoute('admin.type');
         }
 
-        $antenne->setArchived(false);
-        $em->persist($antenne);
+        $type->setArchived(false);
         $em->flush();
 
-        $this->get('braincrafted_bootstrap.flash')->success("L'antenne de ".$antenne->getName()." a bien été activée!");
-        return $this->redirectToRoute('admin.antenne');
+        $this->get('braincrafted_bootstrap.flash')->success("La formation ".$type->getTitre()." a bien été activée!");
+        return $this->redirectToRoute('admin.type');
     }
 }

@@ -33,6 +33,11 @@ class TypeFormation
     protected $prix;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $archived = false;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -96,6 +101,21 @@ class TypeFormation
         $this->prix = $prix;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getArchived()
+    {
+        return $this->archived;
+    }
+
+    /**
+     * @param mixed $archived
+     */
+    public function setArchived($archived)
+    {
+        $this->archived = $archived;
+    }
 
 
 }

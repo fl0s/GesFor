@@ -2,14 +2,14 @@
 
 {% set page = "admin.admin.type_formation" %}
 {% set pageHeader = "Gestion des types de formation" %}
-{% set pageHeaderPlus = "Ajout" %}
+{% set pageHeaderPlus = "Edition de la formation "~type.titre %}
 
 {% block body %}
     <div id="wrapper">
         <div id="container">
             {{ form_errors(form) }}
             <div class="box">
-                <form method="post" action="{{ path('admin.type.create') }}" class="form-horizontal">
+                <form method="post" action="{{ path('admin.type.edit', {'id': type.id}) }}" class="form-horizontal">
                     <div class="box-body">
                         {{ form_row(form.titre, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Titre de la formation' }) }}
                         {{ form_row(form.maxPlace, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Nombre de place' }) }}
@@ -17,7 +17,7 @@
                     </div>
                     <div class="box-footer">
                         {{ form_rest(form) }}
-                        <input type="submit" class="btn btn-primary pull-right" value="Ajouter" />
+                        <input type="submit" class="btn btn-primary pull-right" value="Editer" />
                     </div>
                 </form>
             </div>

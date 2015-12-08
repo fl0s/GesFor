@@ -23,10 +23,15 @@
                         </thead>
                         <tbody>
                         {% for type in types %}
-                            <tr>
+                            <tr {% if type.archived %}class="active"{% endif %}>
                                 <td>{{ type.titre }}</td>
                                 <td>
-                                    <a href="{{ path('admin.antenne.edit', {'id': type.id}) }}" class="btn btn-warning btn-xs">Editer</a>
+                                    <a href="{{ path('admin.type.edit', {'id': type.id}) }}" class="btn btn-warning btn-xs">Editer</a>
+                                    {% if type.archived %}
+                                        <a href="{{ path('admin.type.activer', {'id': type.id}) }}" class="btn btn-success btn-xs">Activer</a>
+                                    {% else %}
+                                        <a href="{{ path('admin.type.archive', {'id': type.id}) }}" class="btn btn-danger btn-xs">Archiver</a>
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% else %}

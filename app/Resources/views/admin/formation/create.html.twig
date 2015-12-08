@@ -1,7 +1,7 @@
 {% extends 'admin/base.html.twig' %}
 
-{% set page = "admin.admin.type_formation" %}
-{% set pageHeader = "Gestion des types de formation" %}
+{% set page = "admin.formation" %}
+{% set pageHeader = "Gestion des Formations" %}
 {% set pageHeaderPlus = "Ajout" %}
 
 {% block body %}
@@ -9,11 +9,9 @@
         <div id="container">
             {{ form_errors(form) }}
             <div class="box">
-                <form method="post" action="{{ path('admin.type.create') }}" class="form-horizontal">
+                <form method="post" action="{{ path('admin.formation.create') }}" class="form-horizontal">
                     <div class="box-body">
-                        {{ form_row(form.titre, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Titre de la formation' }) }}
-                        {{ form_row(form.maxPlace, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Nombre de place' }) }}
-                        {{ form_row(form.prix, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Prix' }) }}
+                        {{ form_row(form.date, { 'style': 'horizontal', 'label_col': 3, 'widget_col': 6, 'label': 'Date de la formation' }) }}
                     </div>
                     <div class="box-footer">
                         {{ form_rest(form) }}

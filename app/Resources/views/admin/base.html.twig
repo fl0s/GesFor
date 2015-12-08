@@ -108,7 +108,7 @@ desired effect
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
                 <li {% if (pageIds|length > 1 and pageIds.1 == 'formation') %}class="active"{% endif %}>
-                    <a href="#"><i class="fa fa-graduation-cap"></i> <span>Formations</span></a>
+                    <a href="{{ path('admin.formation') }}"><i class="fa fa-graduation-cap"></i> <span>Formations</span></a>
                 </li>
                 <li class="treeview{% if (pageIds|length > 1 and pageIds.1 == 'admin') %} active{% endif %}">
                     <a href="#"><i class="fa fa-cog"></i> <span>Administration</span> <i class="fa fa-angle-left pull-right"></i></a>
