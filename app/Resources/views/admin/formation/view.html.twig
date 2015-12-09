@@ -1,0 +1,92 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set page = "admin.formation" %}
+{% set pageHeader = "Gestion des Formations" %}
+{% set pageHeaderPlus = "du "~formation.date|date('d/m/Y')~", Antenne de "~formation.antenne.name %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">Information</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-4 text-right"><strong>Type:</strong></div>
+                                <div class="col-lg-8">{{ formation.type.titre }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 text-right"><strong>Date:</strong></div>
+                                <div class="col-lg-8">{{ formation.date|date('d/m/Y') }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 text-right"><strong>Lieu:</strong></div>
+                                <div class="col-lg-8">{{ formation.lieu }}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-4 text-right"><strong>Antenne:</strong></div>
+                                <div class="col-lg-8">{{ formation.antenne.name }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 text-right"><strong>Formateur:</strong></div>
+                                <div class="col-lg-8">{{ formation.formateur }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2 text-right">
+                            <strong>Description:</strong>
+                        </div>
+                        <div class="col-lg-10">
+                            {{ formation.description }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box box-warning">
+                <div class="box-header">
+                    <h3 class="box-title">Liste des inscrits ({{ formation.stagiaires|length }}/{{ formation.type.maxPlace }})</h3>
+                    <div class="box-tools pull-right">
+                        <a href="{{ path("admin.stagiaire.create", {'idFormation': formation.id}) }}" class="btn btn-success btn-sm">Ajouter un Stagiaire</a>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for stagiaire in formation.stagiaires %}
+                                <tr>
+                                    <td>{{ stagiaire.nom }}</td>
+                                    <td>{{ stagiaire.prenom }}</td>
+                                </tr>
+                            {% else %}
+                                <tr class="danger">
+                                    <td colspan="2">Aucun inscrit pour le moment</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}

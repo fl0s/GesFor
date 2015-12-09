@@ -57,19 +57,36 @@ class AdminFormationController extends Controller
     }
 
     /**
+     * @Route("/{id}", name="admin.formation.view")
+     */
+    public function viewAction(Request $request, $id)
+    {
+        $formation = $this->getDoctrine()->getManager()->getRepository("AppBundle:Formation")->find($id);
+
+        if (is_null($formation)) {
+            $this->get('braincrafted_bootstrap.flash')->danger("La formation n'existe pas!");
+            return $this->redirectToRoute('admin.formation');
+        }
+
+        return $this->render('admin/formation/view.html.twig', array(
+            'formation' => $formation
+        ));
+    }
+
+    /**
      * @Route("/{id}/edit", name="admin.formation.edit")
      */
     public function editAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $type = $em->getRepository("AppBundle:TypeFormation")->find($id);
+        $formation = $em->getRepository("AppBundle:Formation")->find($id);
 
-        if (is_null($type)) {
-            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'editer le type de formation demandée!");
-            return $this->redirectToRoute('admin.type');
+        if (is_null($formation)) {
+            $this->get('braincrafted_bootstrap.flash')->error("Impossible d'editer la formation demandée!");
+            return $this->redirectToRoute('admin.formation');
         }
 
-        $form = $this->createForm(new TypeFormationCreateType(), $type);
+        $form = $this->createForm(new FormationCreateType(), $formation);
 
         $form->handleRequest($request);
 
@@ -77,14 +94,14 @@ class AdminFormationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->flush();
 
-            $this->get('braincrafted_bootstrap.flash')->success("La formation ".$type->getTitre()." a bien été éditée!");
+            $this->get('braincrafted_bootstrap.flash')->success("La formation ".$formation->getTitre()." a bien été éditée!");
 
-            return $this->redirectToRoute('admin.type');
+            return $this->redirectToRoute('admin.formation');
         }
 
-        return $this->render('admin/type/edit.html.twig',array(
+        return $this->render('admin/formation/edit.html.twig',array(
             'form'      => $form->createView(),
-            'type'   => $type
+            'formation' => $formation
         ));
     }
 }

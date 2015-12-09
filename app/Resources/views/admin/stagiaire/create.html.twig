@@ -1,0 +1,34 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set page = "admin.formation" %}
+{% set pageHeader = "Gestion des Formations" %}
+{% set pageHeaderPlus = "Ajout d'un stagiaire" %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            {{ form_errors(form) }}
+            <div class="box">
+                <form method="post" action="{{ path('admin.stagiaire.create', {'idFormation': formation.id}) }}" class="form-horizontal">
+                    <div class="box-body">
+                        {{ form_row(form.nom, { 'style': 'horizontal', 'label_col': 2, 'widget_col': 10}) }}
+                        {{ form_row(form.prenom, { 'style': 'horizontal', 'label_col': 2, 'widget_col': 10}) }}
+                        {{ form_row(form.dateNaissance, { 'style': 'horizontal', 'label_col': 2, 'widget_col': 10}) }}
+                        {{ form_row(form.reglement, { 'style': 'horizontal', 'label_col': 2, 'widget_col': 10}) }}
+                    </div>
+                    <div class="box-footer">
+                        {{ form_rest(form) }}
+                        <input type="submit" class="btn btn-primary pull-right" value="Ajouter" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}

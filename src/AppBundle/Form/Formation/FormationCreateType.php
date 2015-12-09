@@ -11,8 +11,16 @@ class FormationCreateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('date', null, array(
-            'date_widget' => 'single_text',
-            'time_widget' => 'single_text',
+            'widget' => 'single_text'
+        ))
+        ->add('antenne', null, array(
+            'choice_label' => 'name'
+        ))
+        ->add('formateur')
+        ->add('lieu')
+        ->add('description')
+        ->add('type', null, array(
+            'choice_label' => 'titre'
         ));
     }
 

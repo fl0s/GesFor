@@ -2,14 +2,14 @@
 
 {% set page = "admin.formation" %}
 {% set pageHeader = "Gestion des Formations" %}
-{% set pageHeaderPlus = "Ajout" %}
+{% set pageHeaderPlus = "Edition" %}
 
 {% block body %}
     <div id="wrapper">
         <div id="container">
             {{ form_errors(form) }}
             <div class="box">
-                <form method="post" action="{{ path('admin.formation.create') }}" class="form-horizontal">
+                <form method="post" action="{{ path('admin.formation.edit', {'id': formation.id}) }}" class="form-horizontal">
                     <div class="box-body">
                         <div class="row">
                             <div class="col-lg-6">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="box-footer">
                         {{ form_rest(form) }}
-                        <input type="submit" class="btn btn-primary pull-right" value="Ajouter" />
+                        <input type="submit" class="btn btn-primary pull-right" value="Editer" />
                     </div>
                 </form>
             </div>
@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block stylesheets %}
-<style>
+    <style>
 
-</style>
+    </style>
 {% endblock %}

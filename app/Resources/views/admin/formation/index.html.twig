@@ -17,16 +17,40 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Nom</th>
-                                <th>Nom court</th>
+                                <th>Date</th>
+                                <th>Antenne</th>
+                                <th>Formateur</th>
+                                <th>Complétion</th>
                                 <th width="150px">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                         {% for formation in formations %}
                             <tr>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    <a href="{{ path('admin.formation.view', {'id': formation.id}) }}">
+                                        {{ formation.date|date('d/m/Y') }}
+                                    </a>
+                                </td>
+                                <td>{{ formation.antenne.name }}</td>
+                                <td>{{ formation.formateur }}</td>
+                                <td>
+                                    <div class="progress sm">
+                                        {% set nbStagiaire = formation.stagiaires|length %}
+                                        {% set perCentStagiaire = (100 * nbStagiaire / formation.type.maxPlace ) %}
+                                        <div
+                                                {% if formation.type.maxPlace == nbStagiaire %}
+                                                    class="progress-bar progress-bar-green"
+                                                {% elseif nbStagiaire >= 6 %}
+                                                    class="progress-bar progress-bar-yellow"
+                                                {% else %}
+                                                    class="progress-bar progress-bar-red"
+                                                {% endif %}
+                                                role="progressbar" aria-valuenow="{{ nbStagiaire }}" aria-valuemin="0" aria-valuemax="{{ formation.type.maxPlace }}" style="width: {{ perCentStagiaire }}%">
+                                            <span class="sr-only">{{ nbStagiaire }} sur {{ formation.type.maxPlace }}</span>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>
                                     <a href="{{ path('admin.formation.edit', {'id': formation.id}) }}" class="btn btn-warning btn-xs">Editer</a>
                                 </td>

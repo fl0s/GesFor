@@ -19,7 +19,7 @@ class Formation {
     protected $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     protected $date;
 
@@ -44,13 +44,18 @@ class Formation {
     /**
      * @ORM\Column(type="text")
      */
-    protected $description;
+    protected $description = "";
 
     /**
      * @ORM\ManyToOne(targetEntity="TypeFormation")
      * @ORM\JoinColumn(name="type", referencedColumnName="id")
      */
     protected $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Stagiaire", mappedBy="formation")
+     */
+    protected $stagiaires;
 
     /**
      * @return mixed
@@ -162,6 +167,22 @@ class Formation {
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStagiaires()
+    {
+        return $this->stagiaires;
+    }
+
+    /**
+     * @param mixed $stagiaires
+     */
+    public function setStagiaires($stagiaires)
+    {
+        $this->stagiaires = $stagiaires;
     }
 
 
