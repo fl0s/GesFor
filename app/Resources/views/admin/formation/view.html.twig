@@ -54,7 +54,9 @@
                 <div class="box-header">
                     <h3 class="box-title">Liste des inscrits ({{ formation.stagiaires|length }}/{{ formation.type.maxPlace }})</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ path("admin.stagiaire.create", {'idFormation': formation.id}) }}" class="btn btn-success btn-sm">Ajouter un Stagiaire</a>
+                        {% if formation.stagiaires|length < formation.type.maxPlace %}
+                            <a href="{{ path("admin.stagiaire.create", {'idFormation': formation.id}) }}" class="btn btn-success btn-sm">Ajouter un Stagiaire</a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="box-body no-padding">

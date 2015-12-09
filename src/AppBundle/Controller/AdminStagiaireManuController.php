@@ -30,6 +30,11 @@ class AdminStagiaireManuController extends Controller
             return $this->redirectToRoute('admin.formation');
         }
 
+        if (count($formation->getStagiaires()) >= $formation->getType()->getMaxPlace()) {
+            $this->get('braincrafted_bootstrap.flash')->error("La formation est pleine!");
+            return $this->redirectToRoute('admin.formation.view', array('id' => $formation->getId()));
+        }
+
         $stagiaire = new Stagiaire();
         $stagiaire->setFormation($formation);
 
