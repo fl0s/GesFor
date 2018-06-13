@@ -1,0 +1,22 @@
+{% extends 'front/common/base.html.twig' %}
+
+{% block pageId %}home{% endblock %}
+
+{% block body %}
+    <section class="events">
+        {% for course in courses %}
+            <div class="event">
+                <div class="date">
+                    <div class="day">{{ course.start|date('j') }}</div>
+                    <div class="month">{{ course.start|date('M') }}</div>
+                </div>
+                <div class="content">
+                    <h2>{{ ('course.types.full.' ~ course.type)|trans }} <span class="small">{{ ('course.types.level.' ~ course.type)|trans }}</span></h2>
+                </div>
+                <div class="action">
+                    <a href="{{ path('front.course.registration', {'course': course.id}) }}" class="btn btn-primary">J'y vais <span class="fa fa-arrow-right"></span></a>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock body %}

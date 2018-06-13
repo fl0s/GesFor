@@ -1,0 +1,25 @@
+{% extends 'admin/common/page.html.twig' %}
+
+{% block title %}Formations{% endblock %}
+{% block subTitle %}Création{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left" method="post">
+                        {{ form_errors(form) }}
+                        {{ form_rest(form) }}
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-success">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

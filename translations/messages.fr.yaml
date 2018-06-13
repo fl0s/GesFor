@@ -1,0 +1,66 @@
+course:
+    form:
+        field:
+            addressLine: Adresse de la formation
+            addressName: Lieu de la formation
+            city: Ville
+            end: Fin de formation
+            numberOfStudent: Nombre de stagiaire
+            office: Organisateur
+            postalCode: Code postal
+            start: Début de formation
+            type: Type de formation
+        flash:
+            success:
+                add: "La formation a bien été créée\ !"
+                edit: "La formation a bien été mise à jour\ !"
+    types:
+        psc1: PSC1
+        full:
+            psc1: Premiers Secours Civique
+        level:
+            psc1: Niveau 1
+
+office:
+    form:
+        field:
+            name: Nom de l'antenne
+            phone: Numéro de téléphone
+            email: Adresse email
+        flash:
+            success:
+                add: "L'antenne a bien été créée\ !"
+                edit: "L'antenne a bien été mise à jour\ !"
+
+trainee:
+    genders:
+        female: Madame
+        male: Monsieur
+    form:
+        field:
+            adressCity: Ville
+            adressLine: Adresse
+            adressPostalCode: Code postal
+            birthDate: Date de Naissande
+            birthDepartment: Département de naissance
+            birthPlace: Lieu de Naissance
+            email: Email
+            firstName: Prénom
+            gender: Civilité
+            lastName: Nom de famille
+            maidenName: Nom de jeune fille
+            phone: Numéro de téléphone
+            study: Étude en cours
+            work: Emploi
+
+user:
+    form:
+        field:
+            firstName: Prénom
+            lastName: Nom de famille
+            email: Adresse email
+            roles: Roles applicatifs
+        flash:
+            success:
+                edit: "L'utilisateur a bien été mise à jour\ !"
+

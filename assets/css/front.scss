@@ -1,0 +1,12 @@
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+
+@import "front/colors";
+
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import '~icheck/skins/flat/green';
+@import '~nprogress/nprogress';
+@import '~bootstrap-progressbar/css/bootstrap-progressbar-3.3.4';
+@import '~bootstrap-daterangepicker/daterangepicker';
+@import '~animate.css/animate';
+
+@import "front/home";

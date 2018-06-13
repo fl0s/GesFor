@@ -1,0 +1,46 @@
+#home {
+    section.events {
+        margin: 5rem 0px;
+
+        .event {
+            display: flex;
+            box-shadow: 0 0 1rem rgba(0,0,0,.1);
+            margin: 2rem 0;
+
+            .date {
+                flex: 1;
+                background-color: $protecBlue;
+                color: #ffffff;
+                text-align: center;
+                padding: 1rem;
+
+                .day {
+                    font-size: 6rem;
+                }
+                .month {
+                    font-size: 2rem;
+                }
+            }
+            .content {
+                flex: 8;
+                padding: 1rem;
+
+                h2 {
+                    font-size: 2.5rem;
+                    margin-top: 0.8rem;
+
+                    .small {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+            .action {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 1rem;
+            }
+        }
+    }
+}

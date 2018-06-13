@@ -1,0 +1,44 @@
+{% extends 'admin/common/page.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_content">
+                    <table class="table table-striped projects">
+                        <thead>
+                        <tr>
+                            <th style="width: 20%">Nom</th>
+                            <th>Email</th>
+                            <th>Roles</th>
+                            <th style="width: 20%"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>
+                                    {{ user.fullName }}
+                                </td>
+                                <td>
+                                    {{ user.email }}
+                                </td>
+                                <td>
+                                    {% for role in user.roles %}
+                                        <span class="label label-primary">{{ role }}</span>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin.user.edit', {'user': user.id}) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Éditer </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Formation{% endblock %} - Protection Civile 44</title>
+
+    <link href="{{ asset('build/css/front.css') }}" rel="stylesheet">
+    <script src="https://use.fontawesome.com/c6b1ece3d7.js"></script>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body id="{% block pageId %}{% endblock %}">
+<div class="container body">
+    <header>
+        <img src="/img/header.png" style="width: 100%">
+    </header>
+    {% block body %}{% endblock %}
+    <footer>
+        <img src="/img/footer.png" style="width: 100%">
+    </footer>
+{% block javascripts %}{% endblock %}
+<script src="{{ asset('build/js/front.js') }}"></script>
+</body>
+</html>
